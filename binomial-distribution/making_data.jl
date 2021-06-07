@@ -2,7 +2,7 @@ using Plots
 
 # Simulate the ratings of different customers
 function customerRatings()
-	# Ten different customers are a sample
+  # Ten different customers are a sample
 	punctuations = rand(10)
 	positives = 0
 	negatives = 0
