@@ -53,16 +53,15 @@ println("Distribucion")
 println("$ratings_distribution . number samples $number_samples")
 quantity_scale = convert(Vector{Int},1:10)
 quantity_scale = 1:10
-K = Int(round(1 + 3.322 * log(length(ratings_distribution))))
+K = Int(round(1 + 3.322 * log(length(positives_per_sample))))
 # fit data in histogram
 h = fit(Histogram, ratings_distribution, nbins= 10)
 # h.weights frequency
 println("Edges $(h.edges) Weights $(h.weights)")
 
 p_histogram = histogram(
-                  ratings_distribution,
-                  bins = quantity_scale,
-                  weights = 1,
+                  positives_per_sample,
+                  bins = :scott,
                   xlabel = "Probability",
                   ylabel = "Frequency",
                   title = "Probabilities of ratings distribution",
