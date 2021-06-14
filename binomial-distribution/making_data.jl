@@ -8,9 +8,9 @@ gr(size = (800,450))
 # End Plots related
 
 # Simulate the ratings of different customers
-function customerRatings()
+function customerRatings(score)
   # Ten different customers are a sample
-  punctuations = rand(10)
+  punctuations = rand(score)
   positives = 0
   negatives = 0
   for i ∈ punctuations
@@ -21,14 +21,15 @@ function customerRatings()
   return positives
 end
 
+perfect_review = 100
 # Get the experiences of diffentes scenarios
 positives_per_sample = Int64[]
 for i = 1:10000
-  push!(positives_per_sample, customerRatings() )
+  push!(positives_per_sample, customerRatings(perfect_review) )
 end
 
 println("How many of these samples achieve the 100% rating?")
-number_perfect_rating = count(i-> i == 10, positives_per_sample)
+number_perfect_rating = count(i-> i == perfect_review, positives_per_sample)
 number_samples = length(positives_per_sample)
 percentage_perfect_rating = round(number_perfect_rating/number_samples * 100; digits=2)
 println("$number_perfect_rating out of $number_samples have perfect score, this being the $percentage_perfect_rating %")
@@ -39,7 +40,7 @@ println("$number_perfect_rating out of $number_samples have perfect score, this 
 # The 'problem' with the success rate, is that it keeps changing over time.
 # For now, let's keep the problem with success rate of 0.95
 s = 0.95
-rating_scale = 1:10
+rating_scale = 1:perfect_review
 ratings_distribution = Int64[]
 
 println("Distribution")
@@ -59,5 +60,5 @@ p_histogram = histogram(
                 color = :dodgerblue
               )
 
-savefig("Distribution_$number_samples.png")
+savefig("Distribution_$perfect_review-$number_samples.png")
 
