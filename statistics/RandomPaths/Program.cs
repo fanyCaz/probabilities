@@ -2,19 +2,23 @@
 
 namespace RandomPaths
 {
-    class Program
+  class Program
+  {
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-            Drunk guy = new Drunk("Javi");
-            Console.WriteLine(guy.Name);
-            TraditionalDrunk dude = new TraditionalDrunk("Jorge");
-            dude.Walks();
-            Coordinate coordinate = new Coordinate(0,0);
-            Coordinate newPoint = coordinate.Move(3,4);
-            Console.WriteLine(coordinate.X);
-            Console.WriteLine(coordinate.DistanceTo(newPoint));
-        }
+      //Hypothesis: A drunk dude will move further from its origin while it keeps walking
+      int[] paths_distances = new int[] { 10,100,1000,10000 };
+      int attemps_number = 100;
+      List<int> distances = new List<int>();
+      
+      foreach(int path in paths_distances){
+        distances = SimulateWalking(path, attempts_number);
+      }
     }
+
+    List<int> SimulateWalking(int path, int attempts){
+      TraditionalDrunk dude = TraditionalDrunk("Juan");
+      var origin = new Coordinate(0,0);
+    }
+  }
 }

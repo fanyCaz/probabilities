@@ -8,8 +8,8 @@ public class Coordinate{
     Y = y;
   }
 
-  public Coordinate Move(int delta_x, int delta_y){
-    return new Coordinate(this.X + delta_x,this.Y + delta_y);
+  public Coordinate Move(Coordinate new_point){
+    return new Coordinate(this.X + new_point.X,this.Y + new_point.Y);
   }
 
   public double DistanceTo(Coordinate otherPoint){
