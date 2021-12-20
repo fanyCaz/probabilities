@@ -9,7 +9,7 @@ end
 
 function main()
   # Obtener un 12 con dos dados, y 10 tiros
-  throws_number = 10
+  throws_number = 1
   attempts_number = 10000
   throws = []
   one_counter = 0
@@ -21,13 +21,18 @@ function main()
     push!(throws, throw_sequence)
     # Counts if a 1 is found in the sequence
     #one_counter += any(x -> x == 1, throw_sequence) ? 1 : 0
-    if 1 ∉ throw_sequence
+    # Counts if not 1 is found in sequence
+    #if 1 ∉ throw_sequence
+    #  one_counter += 1
+    #end
+    # Count if there's a 12 in two dices
+    if count(x -> x == 6, throw_sequence) == 2
       one_counter += 1
     end
   end
-  println("Number of one's found: $one_counter - Number of attempts: $attempts_number")
+  println("Number of a twelve is found: $one_counter - Number of attempts: $attempts_number")
   probability = one_counter/attempts_number
-  println("Probability of not getting a one: $probability")
+  println("Probability of getting a twelve: $probability")
 end
 
 main()
