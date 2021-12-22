@@ -18,8 +18,8 @@ end
 function main()
   sticks = ["sword","heart","rhombus","trefoil"]
   values = ["as","2","3","4","5","6","7","8","9","joker","queen","king"]
-  attempts = 1
-  hand_size = 10
+  attempts = 1000
+  hand_size = 3
   decks = createDeck(sticks,values)
   hands = []
   for i in 1:attempts
@@ -33,10 +33,8 @@ function main()
       push!(vals, card[2])
     end
     counter = countmap(vals)
-    println(counter)
-    for occurrence in values(counter)
-      println(occurrence)
-      if occurrence == 2
+    for occurrence in counter
+      if occurrence[2] == 3
         count_pairs += 1
         break
       end
