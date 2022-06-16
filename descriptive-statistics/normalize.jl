@@ -3,6 +3,7 @@ using DataFrames
 using Statistics
 using Plots
 
+# Numerical scaling
 function min_max(data,column)
   max_value = maximum(data[:,column])
   min_value = minimum(data[:,column])
@@ -34,6 +35,13 @@ function square_root_data(data,column)
   return map(x-> √(x), data[:,column])
 end
 
+# Categorical variables
+
+function one_hot(data,column)
+  uniques = unique(reduce(vcat,data[:,column]))
+  return uniques .== permutedims(uniques)
+end
+
 function main()
   gr(size=(800,450))
   cars_df = CSV.read("vehicle_s.csv", DataFrame)
@@ -42,6 +50,9 @@ function main()
   norm = hip_tan(cars_df,"compactness",1000)
   norm = square_root_data(cars_df,"compactness")
   print_distribution(norm)
+  image_df = CSV.read("segmentation_paper.csv", DataFrame)
+  classes = one_hot(image_df,"LABEL")
+  print(classes)
 end
 
 main()

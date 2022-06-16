@@ -1,3 +1,4 @@
 [deps]
 Debugger = "31a5f54b-26ea-5ae9-a837-f05ce5417438"
+GLM = "38e38edf-8417-5370-95a0-9cbb8c7f171a"
 StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
