@@ -42,6 +42,10 @@ function one_hot(data,column)
   return uniques .== permutedims(uniques)
 end
 
+function read_data(name_csv)
+  return CSV.read(name_csv, DataFrame)
+end
+
 function main()
   gr(size=(800,450))
   cars_df = CSV.read("vehicle_s.csv", DataFrame)
@@ -55,4 +59,3 @@ function main()
   print(classes)
 end
 
-main()

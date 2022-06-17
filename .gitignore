@@ -1,3 +1,5 @@
 /.obsidian
 *.png
 *.csv
+*.data
+*.names
